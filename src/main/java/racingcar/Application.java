@@ -8,5 +8,8 @@ public class Application {
 		List<Car> cars = InputProcess.getCarList();
 		System.out.println("cars = " + cars);
 
+		Integer moves = InputProcess.getNumberOfMoves();
+		System.out.println("moves = " + moves);
+
 	}
 }

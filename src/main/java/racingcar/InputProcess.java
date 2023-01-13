@@ -10,10 +10,12 @@ public class InputProcess {
 
 	private static List<Car> carList;
 
+	private static Integer numberOfMoves;
+
 	public static List<Car> getCarList() {
 		try {
 			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-			String readLine = Console.readLine(); // CarName 추출 - 5자 이하만 가능
+			String readLine = Console.readLine();
 			String[] splitedStrings = readLine.split(",");
 			carList = new ArrayList<>();
 			for (String s : splitedStrings) {
@@ -33,7 +35,30 @@ public class InputProcess {
 			System.out.println(e.getMessage());
 			getCarList();
 		}
-		return new ArrayList<>(carList); // clone, 복사해서 리턴해야 함
+		return new ArrayList<>(carList);
+	}
+
+	public static Integer getNumberOfMoves() {
+		try {
+			System.out.println("시도할 회수는 몇회인가요?");
+			String inputString = Console.readLine();
+			for (char c : inputString.toCharArray()) {
+				if (!Character.isDigit(c)) {
+					StringBuilder sb = new StringBuilder();
+					String errorMessage = sb.append(errorTag)
+							.append("이동횟수는 숫자만 입력할 수 있습니다. ")
+							.append(inputString)
+							.append("는 숫자가 아닙니다.")
+							.toString();
+					throw new IllegalArgumentException(errorMessage);
+				}
+			}
+			numberOfMoves = Integer.parseInt(inputString);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			getNumberOfMoves();
+		}
+		return numberOfMoves;
 	}
 
 }

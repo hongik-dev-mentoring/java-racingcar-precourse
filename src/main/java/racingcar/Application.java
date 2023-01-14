@@ -19,5 +19,14 @@ public class Application {
 			System.out.println();
 		}
 
+		List<Car> winners = race.selectWinners();
+		StringBuilder sb = new StringBuilder("최종 우승자 : ");
+		for (int i = 0; i < winners.size(); i++) {
+			sb.append(winners.get(i).getName());
+			if (i != winners.size() - 1) {
+				sb.append(", ");
+			}
+		}
+		System.out.println(sb);
 	}
 }

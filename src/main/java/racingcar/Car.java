@@ -29,4 +29,11 @@ public class Car {
 		System.out.println(sb);
 	}
 
+	public int getPosition() {
+		return this.position;
+	}
+
+	public String getName() {
+		return this.name;
+	}
 }

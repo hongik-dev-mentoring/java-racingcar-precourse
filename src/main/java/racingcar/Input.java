@@ -1,12 +1,12 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
-    static String[] carNames = new String[100];
-    static int carPos = 0;
-    static int carNum;
+import java.util.ArrayList;
+import java.util.List;
 
-    public static String[] ReadCarName(){
+public class Input {
+    static ArrayList<String> carNames = new ArrayList<String>();
+    public static ArrayList<String> ReadCarName(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         while(true)
         {
@@ -30,8 +30,7 @@ public class Input {
             if(tmp[i].length() > 5){
                 throw new IllegalArgumentException("[Error]");
             }
-            carNames[carPos] = tmp[i];
-            carPos++;
+            carNames.add(tmp[i]);
         }
     }
 
@@ -60,13 +59,5 @@ public class Input {
             throw new IllegalArgumentException("[Error]");
         }
         return num;
-    }
-
-
-    public int getCarNum(){
-        for(int i = 0; carNames[i] != null; i++){
-            carNum++;
-        }
-        return carNum;
     }
 }

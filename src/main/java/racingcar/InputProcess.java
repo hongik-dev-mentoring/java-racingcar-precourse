@@ -54,10 +54,7 @@ public class InputProcess {
 	}
 
 	private static boolean sameStringExists(List<String> strings) {
-		HashSet<String> hashSet = new HashSet<>();
-		for (String s : strings) {
-			hashSet.add(s);
-		}
+		HashSet<String> hashSet = new HashSet<>(strings);
 		return strings.size() != hashSet.size();
 	}
 

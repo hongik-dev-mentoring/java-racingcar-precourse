@@ -19,4 +19,8 @@ public class Car {
         if(Randoms.pickNumberInRange(0,9) >= 4) return 1;
         return 0;
     }
+
+    public int getPosition(){
+        return position;
+    }
 }

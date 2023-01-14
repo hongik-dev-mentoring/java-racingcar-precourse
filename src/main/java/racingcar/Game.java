@@ -1,33 +1,35 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
-    private Car[] cars = new Car[100];
+    private ArrayList<Car> cars = new ArrayList<Car>();
     private int TryNum;
     private int carNum;
 
     public Game(){
-        String[] StringInput = Input.ReadCarName();
+        ArrayList<String> StringInput = Input.ReadCarName();
         TryNum = Input.ReadTryNum();
-
         setCars(StringInput);
-
         Play();
-
-        for(int i = 0; i <carNum; i++){
-            System.out.println(cars[i].getPosition());
-        }
-    }
-
-    public void setCars(String[] Input){
-        for(int i = 0; Input[i] != null; i++){
-            cars[i] = new Car(Input[i]);
-            carNum++;
-        }
     }
 
     public void Play(){
-        for(int i = 0; i < carNum; i++){
-            cars[i].Race(TryNum);
+        for(int i = 0; i <TryNum; i++){
+            Round();
+        }
+    }
+
+    public void Round(){
+        for(Car c1 : cars){
+            c1.Race(TryNum);
+        }
+    }
+
+    public void setCars(ArrayList<String> input){
+        for(int i = 0; i <input.size(); i++){
+            cars.add(new Car(input.get(i)));
         }
     }
 }

@@ -13,11 +13,9 @@ public class Car {
 	// 추가 기능 구현
 	public void go() {
 		int randomNumber = Randoms.pickNumberInRange(0, 9);
-//		System.out.println(name + " randomNumber: " + randomNumber);
 		if (randomNumber >= 4) {
 			this.position++;
 		}
-//		System.out.println(name + " position: " + position);
 	}
 
 	public void printPosition() {

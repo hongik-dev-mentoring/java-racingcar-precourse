@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
     static String[] carNames = new String[100];
     static int carPos = 0;
+    static int carNum;
 
     public static String[] ReadCarName(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -59,5 +60,13 @@ public class Input {
             throw new IllegalArgumentException("[Error]");
         }
         return num;
+    }
+
+
+    public int getCarNum(){
+        for(int i = 0; carNames[i] != null; i++){
+            carNum++;
+        }
+        return carNum;
     }
 }

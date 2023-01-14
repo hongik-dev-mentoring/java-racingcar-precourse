@@ -29,6 +29,9 @@ public class InputProcess {
 		carList = new ArrayList<>();
 		for (String s : splitedStrings) {
 			String carName = s.trim();
+			if (carName.isEmpty()) {
+				continue;
+			}
 			checkStringLengthLimit(carName);
 			carList.add(new Car(carName));
 		}

@@ -21,6 +21,8 @@ public class Car {
     }
 
     public int getPosition(){
-        return position;
+        int result = position;
+        position = 0;
+        return result;
     }
 }

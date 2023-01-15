@@ -16,7 +16,6 @@ public class InputProcess {
 		try {
 			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 			String readLine = Console.readLine();
-			carList = new ArrayList<>();
 			createCarListFromInputString(readLine);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -28,6 +27,7 @@ public class InputProcess {
 	private static void createCarListFromInputString(String input) {
 		List<String> carNames = splitAndTrimInputString(input);
 		checkSameStringExists(carNames);
+		carList = new ArrayList<>();
 		for (String name : carNames) {
 			carList.add(new Car(name));
 		}

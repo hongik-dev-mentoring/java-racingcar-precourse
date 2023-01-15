@@ -10,7 +10,7 @@ public class Application {
 
 		Race race = new Race(cars, moves);
 		race.start();
-		race.selectWinners();
+		race.printWinners();
 
 	}
 }

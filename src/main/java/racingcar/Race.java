@@ -25,9 +25,14 @@ public class Race {
 		}
 	}
 
-	public void selectWinners() {
+	public void printWinners() {
 		int maxPosition = getMaxPosition();
-		addCarsAtMaxPosition(maxPosition);
+		selectWinners(maxPosition);
+		String result = createResultString();
+		System.out.println(result);
+	}
+
+	private String createResultString() {
 		StringBuilder sb = new StringBuilder("최종 우승자 : ");
 		for (int i = 0; i < winners.size(); i++) {
 			sb.append(winners.get(i).getName());
@@ -35,10 +40,10 @@ public class Race {
 				sb.append(", ");
 			}
 		}
-		System.out.println(sb);
+		return sb.toString();
 	}
 
-	private void addCarsAtMaxPosition(int maxPosition) {
+	private void selectWinners(int maxPosition) {
 		for (Car car : cars) {
 			int position = car.getPosition();
 			if (maxPosition == position) {

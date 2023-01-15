@@ -3,6 +3,10 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static racingcar.message.ConsoleMessage.*;
+import static racingcar.message.ErrorMessage.*;
 
 public class InputProcess {
 
@@ -12,31 +16,34 @@ public class InputProcess {
 
 	public List<Car> getCarList() {
 		try {
-			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+			System.out.println(INPUT_CAR_NAMES);
 			String readLine = Console.readLine();
 			createCarListFromInputString(readLine);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			getCarList();
 		}
-		return new ArrayList<>(carList);
+		return carList;
 	}
 
 	private void createCarListFromInputString(String input) {
 		List<String> carNames = splitAndTrimInputString(input);
+		checkOnlyOneCarExists(carNames);
 		checkSameStringExists(carNames);
-		carList = new ArrayList<>();
-		for (String name : carNames) {
-			carList.add(new Car(name));
+		carList = carNames.stream().map(Car::new).collect(Collectors.toList());
+	}
+
+	private void checkOnlyOneCarExists(List<String> cars) {
+		if (cars.size() == 1) {
+			throw new IllegalArgumentException(NOT_ENOUGH_CARS.toString());
 		}
 	}
 
 	private List<String> splitAndTrimInputString(String input) {
-		String[] splitedStrings = input.split(",");
-		List<String> results = new ArrayList<>();
-		for (String s : splitedStrings) {
+		String[] names = input.split(",");
+		List<String> results = new ArrayList<>(); //
+		for (String s : names) {
 			String carName = s.trim();
-			if (carName.isEmpty()) continue;
 			checkStringLengthLimit(carName);
 			results.add(carName);
 		}
@@ -44,32 +51,43 @@ public class InputProcess {
 	}
 
 	private void checkSameStringExists(List<String> strings) {
-		if (sameStringExists(strings)) {
-			throw (new IllegalArgumentException("[ERROR] 중복된 자동차 이름이 존재합니다."));
-		}
-	}
-
-	private boolean sameStringExists(List<String> strings) {
 		HashSet<String> hashSet = new HashSet<>(strings);
-		return strings.size() != hashSet.size();
+		if (strings.size() != hashSet.size()) {
+			throw (new IllegalArgumentException(DUPLICATED_NAMES.toString()));
+		}
 	}
 
 	private void checkStringLengthLimit(String carName) {
-		if (carName.length() > 5) {
-			throw (new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다."));
+		if (carName.length() > 5 || carName.isEmpty()) {
+			throw (new IllegalArgumentException(NOT_PROPER_NAME_LENGTH.toString()));
 		}
 	}
 
-	public Integer getNumberOfMoves() {
+	public Integer getMoveCount() {
 		try {
-			System.out.println("시도할 회수는 몇회인가요?");
-			String inputString = Console.readLine();
-			numberOfMoves = Integer.parseInt(inputString);
+			System.out.println(INPUT_MOVE_COUNT);
+			String input = Console.readLine();
+			checkInputIsNumber(input);
+			checkInputIsMoreThanOne(input);
 		} catch (IllegalArgumentException e) {
-			System.out.println("[ERROR] 이동횟수는 숫자만 입력할 수 있습니다.");
-			getNumberOfMoves();
+			System.out.println(e.getMessage());
+			getMoveCount();
 		}
 		return numberOfMoves;
+	}
+
+	private void checkInputIsNumber(String input) {
+		try {
+			numberOfMoves = Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER.toString());
+		}
+	}
+
+	private void checkInputIsMoreThanOne(String input) {
+		if (Integer.parseInt(input) < 1) {
+			throw new IllegalArgumentException(INPUT_IS_NOT_ALLOWED_UNDER_ONE.toString());
+		}
 	}
 
 }

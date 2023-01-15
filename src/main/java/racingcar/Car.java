@@ -4,12 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position = 0;
+    private int positionBase = 0;
 
     public Car(String name) {
         this.name = name;
     }
 
     public void Race(int num){
+        positionBase = position;//변하기전 위치 기억
         for(int i = 0; i < num; i++){
             position += MoveOrNot();
         }
@@ -21,8 +23,10 @@ public class Car {
     }
 
     public int getPosition(){
-        int result = position;
-        position = 0;
-        return result;
+        return position - positionBase;
+    }
+
+    public String getName(){
+        return name;
     }
 }

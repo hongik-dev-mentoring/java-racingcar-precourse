@@ -24,16 +24,31 @@ class NumberValidatorTest {
 	@ParameterizedTest(name = "시도 횟수 : {0}, 결과 : {1}")
 	@DisplayName("시도 횟수 유효성 검사")
 	@MethodSource("invalidAttemptNumber")
-	void validate_attempt_number_success(String attemptNumber, String expectedResult) {
+	void validate_attempt_number_failure(String attemptNumber, String expectedResult) {
 		assertThrows(IllegalArgumentException.class, () ->
 			NumberGenerator.generateNumber(attemptNumber)
 		);
+	}
+
+	@ParameterizedTest(name = "시도 횟수 : {0}, 결과 : {1}")
+	@DisplayName("시도 횟수 유효성 검사")
+	@MethodSource("validAttemptNumber")
+	void validate_attempt_number_success(String attemptNumber, String expectedResult) {
+		int attemptNumberToInt = NumberGenerator.generateNumber(attemptNumber);
+		assertEquals(Integer.parseInt(attemptNumber), attemptNumberToInt);
 	}
 
 	static Stream<Arguments> invalidAttemptNumber() {
 		return Stream.of(
 			Arguments.arguments("a", "숫자가 아닌 문자 입력"),
 			Arguments.arguments("-1", "1회 미만의 숫자 입력")
+		);
+	}
+
+	static Stream<Arguments> validAttemptNumber() {
+		return Stream.of(
+			Arguments.arguments("5", "5번의 시도 횟수"),
+			Arguments.arguments("1", "1번의 시도 횟수")
 		);
 	}
 

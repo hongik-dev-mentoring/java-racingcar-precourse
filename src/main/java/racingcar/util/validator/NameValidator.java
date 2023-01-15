@@ -14,7 +14,7 @@ public class NameValidator {
 
 	public static void validateCarNames(String carNames) {
 		/**
-		 * 검증할 내용
+		 * 자동차 이름 예외처리
 		 * 1. Null
 		 * 2. empty
 		 * 3. Duplicate

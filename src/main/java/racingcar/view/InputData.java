@@ -11,7 +11,7 @@ public class InputData {
 		return Console.readLine();
 	}
 
-	public static String getAttemptNumbers() {
+	public static String getAttemptNumber() {
 		System.out.println(NUMBER_OF_ATTEMPT_ALERT_MESSAGE);
 		return Console.readLine();
 	}

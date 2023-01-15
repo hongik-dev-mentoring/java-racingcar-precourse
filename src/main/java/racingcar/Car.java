@@ -5,6 +5,7 @@ public class Car {
     private final String name;
     private int position = 0;
     private int positionBase = 0;
+    private int winNum = 0;
 
     public Car(String name) {
         this.name = name;
@@ -28,5 +29,13 @@ public class Car {
 
     public String getName(){
         return name;
+    }
+
+    public void increaseWinNum(){
+        winNum++;
+    }
+
+    public int getWinNum(){
+        return winNum;
     }
 }

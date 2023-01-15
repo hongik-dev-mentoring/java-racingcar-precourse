@@ -28,7 +28,7 @@ public class Input {
 
         for(int i = 0; i < tmp.length; i++){
             if(tmp[i].length() > 5){
-                throw new IllegalArgumentException("[Error]");
+                throw new IllegalArgumentException("[ERROR]");
             }
             carNames.add(tmp[i]);
         }

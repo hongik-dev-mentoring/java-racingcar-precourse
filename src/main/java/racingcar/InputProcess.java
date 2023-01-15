@@ -6,11 +6,11 @@ import java.util.*;
 
 public class InputProcess {
 
-	private static List<Car> carList;
+	private List<Car> carList;
 
-	private static Integer numberOfMoves;
+	private Integer numberOfMoves;
 
-	public static List<Car> getCarList() {
+	public List<Car> getCarList() {
 		try {
 			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 			String readLine = Console.readLine();
@@ -22,7 +22,7 @@ public class InputProcess {
 		return new ArrayList<>(carList);
 	}
 
-	private static void createCarListFromInputString(String input) {
+	private void createCarListFromInputString(String input) {
 		List<String> carNames = splitAndTrimInputString(input);
 		checkSameStringExists(carNames);
 		carList = new ArrayList<>();
@@ -31,7 +31,7 @@ public class InputProcess {
 		}
 	}
 
-	private static List<String> splitAndTrimInputString(String input) {
+	private List<String> splitAndTrimInputString(String input) {
 		String[] splitedStrings = input.split(",");
 		List<String> results = new ArrayList<>();
 		for (String s : splitedStrings) {
@@ -43,24 +43,24 @@ public class InputProcess {
 		return results;
 	}
 
-	private static void checkSameStringExists(List<String> strings) {
+	private void checkSameStringExists(List<String> strings) {
 		if (sameStringExists(strings)) {
 			throw (new IllegalArgumentException("[ERROR] 중복된 자동차 이름이 존재합니다."));
 		}
 	}
 
-	private static boolean sameStringExists(List<String> strings) {
+	private boolean sameStringExists(List<String> strings) {
 		HashSet<String> hashSet = new HashSet<>(strings);
 		return strings.size() != hashSet.size();
 	}
 
-	private static void checkStringLengthLimit(String carName) {
+	private void checkStringLengthLimit(String carName) {
 		if (carName.length() > 5) {
 			throw (new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다."));
 		}
 	}
 
-	public static Integer getNumberOfMoves() {
+	public Integer getNumberOfMoves() {
 		try {
 			System.out.println("시도할 회수는 몇회인가요?");
 			String inputString = Console.readLine();

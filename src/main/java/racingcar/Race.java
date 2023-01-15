@@ -5,15 +5,17 @@ import java.util.List;
 
 public class Race {
 
+	private final InputProcess input = new InputProcess();
+
 	private final List<Car> cars;
 
 	private final Integer moves;
 
 	private final List<Car> winners = new ArrayList<>();
 
-	public Race(List<Car> cars, Integer moves) {
-		this.cars = cars;
-		this.moves = moves;
+	public Race() {
+		this.cars = input.getCarList();
+		this.moves = input.getNumberOfMoves();
 	}
 
 	public void start() {

@@ -17,9 +17,7 @@ public class Game {
 
         System.out.println("실행 결과");
         Play();
-        for(Car c1: cars){
-            System.out.println("name: " + c1.getName() + " win : " + c1.getWinNum());
-        }
+        finalWin();
     }
 
     public void Play(){
@@ -60,5 +58,20 @@ public class Game {
         for(int i = 0; i <input.size(); i++){
             cars.add(new Car(input.get(i)));
         }
+    }
+
+    public void finalWin(){
+        Collections.sort(cars, (c1, c2) -> c2.getWinNum() - c1.getWinNum());
+        Car maxCar = cars.get(0);
+        int max = maxCar.getWinNum();
+        System.out.print("최종 우승자 : " + maxCar.getName());
+        for(int i = 1; i <carNum; i++){
+            Car c1 = cars.get(i);
+            if(c1.getWinNum() != max){
+                break;
+            }
+            System.out.print(", "+c1.getName());
+        }
+        System.out.println();
     }
 }

@@ -71,27 +71,14 @@ public class InputProcess {
 		try {
 			System.out.println("시도할 회수는 몇회인가요?");
 			String inputString = Console.readLine();
-			checkStringContainsOnlyNumber(inputString);
 			numberOfMoves = Integer.parseInt(inputString);
 		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
+			StringBuilder sb = new StringBuilder();
+			sb.append(errorTag).append("이동횟수는 숫자만 입력할 수 있습니다.");
+			System.out.println(sb);
 			getNumberOfMoves();
 		}
 		return numberOfMoves;
-	}
-
-	private static void checkStringContainsOnlyNumber(String inputString) {
-		for (char c : inputString.toCharArray()) {
-			checkCharacterIsDigit(c);
-		}
-	}
-
-	private static void checkCharacterIsDigit(char c) {
-		if (!Character.isDigit(c)) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(errorTag).append("이동횟수는 숫자만 입력할 수 있습니다.");
-			throw new IllegalArgumentException(sb.toString());
-		}
 	}
 
 }

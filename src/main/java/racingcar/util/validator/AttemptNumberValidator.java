@@ -3,7 +3,7 @@ package racingcar.util.validator;
 public class AttemptNumberValidator {
 
 	private static final String MIN_ATTEMPT_NUMBER_MESSAGE = "시도 횟수는 1회 이상이어야 합니다.";
-	private static final String ATTEMPT_NUMBER_IS_NOT_INTEGER = "시도 횟수는 숫자만 입력 가능합니다.";
+	private static final String ATTEMPT_NUMBER_IS_NOT_INTEGER = "시도 횟수는 숫자여야 한다.";
 
 	public static void validateNumber(String attemptNumber) {
 		/**

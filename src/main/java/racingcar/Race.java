@@ -15,7 +15,7 @@ public class Race {
 
 	public Race() {
 		this.cars = input.getCarList();
-		this.moves = input.getNumberOfMoves();
+		this.moves = input.getMoveCount();
 	}
 
 	public void start() {

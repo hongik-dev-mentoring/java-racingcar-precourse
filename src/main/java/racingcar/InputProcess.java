@@ -6,8 +6,6 @@ import java.util.*;
 
 public class InputProcess {
 
-	private static final String errorTag = "[ERROR] ";
-
 	private static List<Car> carList;
 
 	private static Integer numberOfMoves;
@@ -47,9 +45,7 @@ public class InputProcess {
 
 	private static void checkSameStringExists(List<String> strings) {
 		if (sameStringExists(strings)) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(errorTag).append("중복된 자동차 이름이 존재합니다.");
-			throw (new IllegalArgumentException(sb.toString()));
+			throw (new IllegalArgumentException("[ERROR] 중복된 자동차 이름이 존재합니다."));
 		}
 	}
 
@@ -60,10 +56,7 @@ public class InputProcess {
 
 	private static void checkStringLengthLimit(String carName) {
 		if (carName.length() > 5) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(errorTag).append("자동차 이름은 5자 이하만 가능합니다. ")
-					.append(carName).append("은 자동차 이름이 될 수 없습니다.");
-			throw (new IllegalArgumentException(sb.toString()));
+			throw (new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다."));
 		}
 	}
 
@@ -73,9 +66,7 @@ public class InputProcess {
 			String inputString = Console.readLine();
 			numberOfMoves = Integer.parseInt(inputString);
 		} catch (IllegalArgumentException e) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(errorTag).append("이동횟수는 숫자만 입력할 수 있습니다.");
-			System.out.println(sb);
+			System.out.println("[ERROR] 이동횟수는 숫자만 입력할 수 있습니다.");
 			getNumberOfMoves();
 		}
 		return numberOfMoves;

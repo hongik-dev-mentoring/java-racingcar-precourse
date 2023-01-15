@@ -24,7 +24,7 @@ public class Car {
     }
 
     public int getPosition(){
-        return position - positionBase;
+        return position - positionBase;//전체 위치가 아닌 한라운드당 위차 계산
     }
 
     public String getName(){

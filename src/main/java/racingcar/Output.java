@@ -2,7 +2,7 @@ package racingcar;
 
 public class Output {
     public static void printRound(Car c1){
-        System.out.print(c1.getName() +": ");
+        System.out.print(c1.getName() +" : ");
         printBar(c1);
     }
     public static void printBar(Car c1){

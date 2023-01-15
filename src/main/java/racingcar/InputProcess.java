@@ -82,12 +82,15 @@ public class InputProcess {
 
 	private static void checkStringContainsOnlyNumber(String inputString) {
 		for (char c : inputString.toCharArray()) {
-			if (!Character.isDigit(c)) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(errorTag).append("이동횟수는 숫자만 입력할 수 있습니다.")
-						.append(inputString).append("는 숫자가 아닙니다.");
-				throw new IllegalArgumentException(sb.toString());
-			}
+			checkCharacterIsDigit(c);
+		}
+	}
+
+	private static void checkCharacterIsDigit(char c) {
+		if (!Character.isDigit(c)) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(errorTag).append("이동횟수는 숫자만 입력할 수 있습니다.");
+			throw new IllegalArgumentException(sb.toString());
 		}
 	}
 

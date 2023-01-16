@@ -6,6 +6,8 @@ import racingcar.util.validator.NameValidator;
 public class Car {
 	private final String name;
 	private int position = 0;
+	private final static int START_RANDOM_NUMBER = 0;
+	private final static int END_RANDOM_NUMBER = 9;
 
 	public Car(String name) {
 		this.name = name;
@@ -21,7 +23,7 @@ public class Car {
 	}
 
 	public void moveForward() {
-		int randomNumber = Randoms.pickNumberInRange(0, 9);
+		int randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER);
 		if (shouldMove(randomNumber)) {
 			this.position++;
 		}

@@ -19,12 +19,6 @@ public class Cars {
 		}
 	}
 
-	public void addCarList(List<Car> carList) {
-		for (Car car : carList) {
-			this.carList.add(car);
-		}
-	}
-
 	public List<Car> getCarList() {
 		return carList.stream()
 			.collect(collectingAndThen(toList(), Collections::unmodifiableList));

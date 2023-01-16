@@ -33,8 +33,8 @@ public class Cars {
 
 	public int findMaxPosition() {
 		return carList.stream()
-			.map(car -> car.getPosition())
-			.max(Integer::compare)
+			.map(Car::getPosition)
+			.reduce(Integer::max)
 			.orElse(0);
 	}
 

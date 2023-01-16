@@ -4,10 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
-	private ArrayList<Car> cars = new ArrayList<Car>();
+	private final ArrayList<Car> cars = new ArrayList<>();
 	private List<Car> SortedCars;
-	private int TryNum;
-	private int carNum;
+	private final int TryNum;
+	private final int carNum;
 
 	public Game() {
 		ArrayList<String> StringInput = Input.ReadCarName();
@@ -61,8 +61,8 @@ public class Game {
 	}
 
 	private void setCars(ArrayList<String> input) {
-		for (int i = 0; i < input.size(); i++) {
-			cars.add(new Car(input.get(i)));
+		for (String s : input) {
+			cars.add(new Car(s));
 		}
 	}
 

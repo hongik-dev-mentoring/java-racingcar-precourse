@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Cars;
 import racingcar.util.generator.NameGenerator;
 import racingcar.util.generator.NumberGenerator;
@@ -27,23 +26,15 @@ public class RaceGameController {
 		moveCarsForwardByAttemptNumber();
 	}
 
+	public void announceWinner() {
+		// 자동차 경주 게임 최종 우승자 발표
+	}
+
 	private void moveCarsForwardByAttemptNumber() {
 		for (int i = 0; i < attemptNumber; ++i) {
-			moveForward(cars);
+			cars.moveForward();
 			OutputData.printCarsPosition(cars.getCarList());
 		}
-	}
-
-	private void moveForward(Cars cars) {
-		int randomNumber = Randoms.pickNumberInRange(0, 9);
-		if (randomNumber >= 4) {
-
-		}
-	}
-
-	public void announceWinner() {
-		// 자동차 경주 게임 최종 우승자 발표 
-
 	}
 
 	private void addCarNamesToCarList() {

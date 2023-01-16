@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.util.validator.NameValidator;
 
 public class Car {
@@ -17,6 +18,13 @@ public class Car {
 
 	public int getPosition() {
 		return position;
+	}
+
+	public void moveForward() {
+		int randomNumber = Randoms.pickNumberInRange(0, 9);
+		if (randomNumber >= 4) {
+			this.position++;
+		}
 	}
 
 	public boolean isWinner(int maxPosition) {

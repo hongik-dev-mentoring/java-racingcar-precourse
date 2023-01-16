@@ -31,10 +31,16 @@ public class Cars {
 			.collect(toList());
 	}
 
-	private int findMaxPosition() {
+	public int findMaxPosition() {
 		return carList.stream()
 			.map(car -> car.getPosition())
 			.max(Integer::compare)
 			.orElse(0);
+	}
+
+	public void moveForward() {
+		for (Car car : carList) {
+			car.moveForward();
+		}
 	}
 }

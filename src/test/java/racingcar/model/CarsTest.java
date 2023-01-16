@@ -21,5 +21,4 @@ class CarsTest {
 		assertThrows(UnsupportedOperationException.class,
 			() -> unmodifiableList.add("4"));
 	}
-
 }

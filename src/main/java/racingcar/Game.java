@@ -20,7 +20,7 @@ public class Game {
 		finalWin();
 	}
 
-	public void Play() {
+	private void Play() {
 		for (int i = 0; i < TryNum; i++) {
 			Round();
 			SortCars();
@@ -28,17 +28,21 @@ public class Game {
 		}
 	}
 
-	public void SortCars() {
+	private void SortCars() {
 		SortedCars = cars.stream()
 			.sorted(Comparator.comparing(Car::getPosition).reversed())
 			.collect(Collectors.toList());
 	}
 
-	public void Score() {
+	private void Score() {
 		Car maxCar = SortedCars.get(0);
 		maxCar.increaseWinNum();
 		int max = maxCar.getPosition();
 
+		handleRoundCoWinner(max);
+	}
+
+	private void handleRoundCoWinner(int max) {
 		for (int i = 1; i < carNum; i++) {
 			Car c1 = SortedCars.get(i);
 			if (c1.getPosition() != max) {
@@ -48,7 +52,7 @@ public class Game {
 		}
 	}
 
-	public void Round() {
+	private void Round() {
 		for (Car c1 : cars) {
 			c1.Race(TryNum);
 			Output.printRound(c1);
@@ -56,17 +60,22 @@ public class Game {
 		System.out.println();
 	}
 
-	public void setCars(ArrayList<String> input) {
+	private void setCars(ArrayList<String> input) {
 		for (int i = 0; i < input.size(); i++) {
 			cars.add(new Car(input.get(i)));
 		}
 	}
 
-	public void finalWin() {
+	private void finalWin() {
 		Collections.sort(cars, (c1, c2) -> c2.getWinNum() - c1.getWinNum());
 		Car maxCar = cars.get(0);
 		int max = maxCar.getWinNum();
 		System.out.print("최종 우승자 : " + maxCar.getName());
+		handleFinalCoWinner(max);
+		System.out.println();
+	}
+
+	private void handleFinalCoWinner(int max) {
 		for (int i = 1; i < carNum; i++) {
 			Car c1 = cars.get(i);
 			if (c1.getWinNum() != max) {
@@ -74,6 +83,5 @@ public class Game {
 			}
 			System.out.print(", " + c1.getName());
 		}
-		System.out.println();
 	}
 }

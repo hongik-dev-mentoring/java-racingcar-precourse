@@ -18,4 +18,11 @@ public class Car {
 	public int getPosition() {
 		return position;
 	}
+
+	public boolean isWinner(int maxPosition) {
+		if (this.getPosition() > maxPosition) {
+			return false;
+		}
+		return true;
+	}
 }

@@ -11,10 +11,9 @@ public class Input {
 	public static ArrayList<String> ReadCarName() {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 		while (true) {
-			String input = Console.readLine();
-			String[] tmp = input.split(",");
+			String[] input = Console.readLine().split(",");
 			try {
-				StringHandlingExecption(tmp);
+				StringHandlingExecption(input);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage() + " 5이하의 문자열을 입력하세요.");
 				continue;
@@ -24,24 +23,22 @@ public class Input {
 		return carNames;
 	}
 
-	public static void StringHandlingExecption(String[] tmp) {
+	private static void StringHandlingExecption(String[] input) {
 
-		for (int i = 0; i < tmp.length; i++) {
-			if (tmp[i].length() > 5) {
+		for (String s : input) {
+			if (s.length() > 5) {
 				throw new IllegalArgumentException("[ERROR]");
 			}
-			carNames.add(tmp[i]);
+			carNames.add(s);
 		}
 	}
 
 	public static int ReadTryNum() {
 		System.out.println("시도할 회수는 몇회인가요?");
 		while (true) {
-			String n;
 			int num;
 			try {
-				n = Console.readLine();
-				num = IntHandlingException(n);
+				num = IntHandlingException(Console.readLine());
 			} catch (Exception e) {
 				System.out.println("[Error] 시도횟수는 숫자여야 한다.");
 				continue;
@@ -50,7 +47,7 @@ public class Input {
 		}
 	}
 
-	public static int IntHandlingException(String n) {
+	private static int IntHandlingException(String n) {
 		int num;
 		try {
 			num = Integer.parseInt(n);

@@ -32,7 +32,6 @@ public class OutputData {
 	public static void printWinners(Cars cars) {
 		List<String> winnersName = cars.findWinnersName();
 		System.out.println(FINAL_WINNER_MESSAGE + String.join(",", winnersName));
-		을
 	}
 
 	private static StringBuilder printCarsCurrentPosition(Car car) {

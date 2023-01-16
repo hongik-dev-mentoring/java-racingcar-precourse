@@ -22,9 +22,16 @@ public class Car {
 
 	public void moveForward() {
 		int randomNumber = Randoms.pickNumberInRange(0, 9);
-		if (randomNumber >= 4) {
+		if (shouldMove(randomNumber)) {
 			this.position++;
 		}
+	}
+
+	public boolean shouldMove(int randomNumber) {
+		if (randomNumber >= 4) {
+			return true;
+		}
+		return false;
 	}
 
 	public boolean isWinner(int maxPosition) {

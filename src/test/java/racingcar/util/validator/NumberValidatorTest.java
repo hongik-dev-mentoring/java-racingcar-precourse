@@ -40,16 +40,15 @@ class NumberValidatorTest {
 
 	static Stream<Arguments> invalidAttemptNumber() {
 		return Stream.of(
-			Arguments.arguments("a", "숫자가 아닌 문자 입력"),
-			Arguments.arguments("-1", "1회 미만의 숫자 입력")
+			Arguments.of("a", "숫자가 아닌 문자 입력"),
+			Arguments.of("-1", "1회 미만의 숫자 입력")
 		);
 	}
 
 	static Stream<Arguments> validAttemptNumber() {
 		return Stream.of(
-			Arguments.arguments("5", "5번의 시도 횟수"),
-			Arguments.arguments("1", "1번의 시도 횟수")
+			Arguments.of("5", "5번의 시도 횟수"),
+			Arguments.of("1", "1번의 시도 횟수")
 		);
 	}
-
 }

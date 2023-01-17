@@ -43,10 +43,10 @@ class NameValidatorTest {
 
 	static Stream<Arguments> invalidCarNames() {
 		return Stream.of(
-			Arguments.arguments("euichan", "이름 5자 초과"),
-			Arguments.arguments("", "1글자 미만"),
-			Arguments.arguments(null, "null 입력"),
-			Arguments.arguments("chan,,dong", "이름이 0자")
+			Arguments.of("euichan", "이름 5자 초과"),
+			Arguments.of("", "1글자 미만"),
+			Arguments.of(null, "null 입력"),
+			Arguments.of("chan,,dong", "이름이 0자")
 		);
 	}
 

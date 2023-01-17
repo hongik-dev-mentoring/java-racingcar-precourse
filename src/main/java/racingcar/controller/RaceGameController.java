@@ -17,12 +17,11 @@ public class RaceGameController {
 		cars = new Cars();
 		addCarNamesToCarList();
 		attemptNumber = getAttemptNumber();
+		printResultHeader();
 	}
 
 	public void run() {
 		// 자동차 경주 게임 시작
-		OutputData.printBlankLine();
-		OutputData.printGameResultHeader();
 		moveCarsForwardByAttemptNumber();
 	}
 
@@ -31,6 +30,11 @@ public class RaceGameController {
 		OutputData.printWinners(cars);
 	}
 
+	private static void printResultHeader() {
+		OutputData.printBlankLine();
+		OutputData.printGameResultHeader();
+	}
+	
 	private void moveCarsForwardByAttemptNumber() {
 		for (int i = 0; i < attemptNumber; ++i) {
 			cars.moveForward();

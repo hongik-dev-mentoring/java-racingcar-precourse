@@ -11,11 +11,21 @@ class CarTest {
 	private Cars cars = new Cars();
 
 	@Test
+	@DisplayName("자동차 생성 테스트")
+	void create_car_test() {
+		assertAll(
+			() -> assertNotNull(car1),
+			() -> assertEquals("chan", car1.getName()),
+			() -> assertEquals(0, car1.getPosition())
+		);
+	}
+
+	@Test
 	@DisplayName("랜덤 숫자가 4 이상일 때만 자동차는 이동한다")
 	public void car_move_by_random_number() {
 		assertFalse(car1.shouldMove(3));
 		assertTrue(car1.shouldMove(4));
 		assertTrue(car1.shouldMove(5));
 	}
-	
+
 }

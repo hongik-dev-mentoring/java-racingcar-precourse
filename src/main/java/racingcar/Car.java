@@ -1,12 +1,27 @@
 package racingcar;
 
 public class Car {
-    private final String name;
-    private int position = 0;
 
-    public Car(String name) {
+    private final String name;
+    private int position;
+    private NumberPicker randoms;
+
+    public Car(String name, NumberPicker randoms) {
         this.name = name;
+        position = 0;
+        this.randoms = randoms;
     }
 
-    // 추가 기능 구현
+    private boolean checkCanMoveForward() {
+        int randomNumber = randoms.pickNumber();
+        return randomNumber >= 4;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

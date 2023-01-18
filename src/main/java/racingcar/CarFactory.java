@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class CarFactory {
 
     private CarFactory() {
-
+        throw new AssertionError();
     }
 
     public static List<Car> getCars(List<String> carNamesList, NumberPicker numberPicker) {

@@ -28,6 +28,10 @@ public class Car {
         return randomNumber >= 4;
     }
 
+    public void printPosition() {
+        System.out.println(currentPositionString);
+    }
+
     public int getPosition() {
         return position;
     }

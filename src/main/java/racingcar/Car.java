@@ -5,10 +5,13 @@ public class Car {
     private final String name;
     private int position;
     private NumberPicker randoms;
+    private final StringBuilder currentPositionString;
 
     public Car(String name, NumberPicker randoms) {
         this.name = name;
         position = 0;
+        currentPositionString = new StringBuilder(name);
+        currentPositionString.append(" : ");
         this.randoms = randoms;
     }
 
@@ -17,6 +20,7 @@ public class Car {
             return;
         }
         position += 1;
+        currentPositionString.append('-');
     }
 
     private boolean checkCanMoveForward() {

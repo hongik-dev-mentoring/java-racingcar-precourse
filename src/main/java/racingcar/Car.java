@@ -4,7 +4,7 @@ public class Car {
 
     private final String name;
     private int position;
-    private NumberPicker randoms;
+    private final NumberPicker numberPicker;
     private final StringBuilder currentPositionString;
 
     public Car(String name, NumberPicker randoms) {
@@ -12,7 +12,7 @@ public class Car {
         position = 0;
         currentPositionString = new StringBuilder(name);
         currentPositionString.append(" : ");
-        this.randoms = randoms;
+        this.numberPicker = randoms;
     }
 
     public void race() {
@@ -24,7 +24,7 @@ public class Car {
     }
 
     private boolean checkCanMoveForward() {
-        int randomNumber = randoms.pickNumber();
+        int randomNumber = numberPicker.pickNumber();
         return randomNumber >= 4;
     }
 

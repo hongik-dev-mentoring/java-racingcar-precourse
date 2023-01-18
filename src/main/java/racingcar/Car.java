@@ -12,6 +12,13 @@ public class Car {
         this.randoms = randoms;
     }
 
+    public void race() {
+        if (!checkCanMoveForward()) {
+            return;
+        }
+        position += 1;
+    }
+
     private boolean checkCanMoveForward() {
         int randomNumber = randoms.pickNumber();
         return randomNumber >= 4;

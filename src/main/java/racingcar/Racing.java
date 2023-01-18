@@ -20,6 +20,7 @@ public class Racing {
         while (checkLeftRacing()) {
             gameCount--;
             raceAllCar();
+            printResult();
         }
     }
 
@@ -29,5 +30,10 @@ public class Racing {
 
     private void raceAllCar() {
         cars.forEach(Car::race);
+    }
+
+    private void printResult() {
+        cars.forEach(Car::printPosition);
+        System.out.println();
     }
 }

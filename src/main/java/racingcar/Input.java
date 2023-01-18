@@ -12,6 +12,11 @@ public class Input {
         return getCarNamesString();
     }
 
+    public int getRacingGameCount() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        return getGameCountString();
+    }
+
     private List<String> getCarNamesString() {
         try {
             return inputCarNamesString();
@@ -41,5 +46,37 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 최대 5자 입니다. 다시 입력해주세요.");
         }
         return trimString;
+    }
+
+
+    private int getGameCountString() {
+        try {
+            return inputGameCountString();
+        } catch (IllegalArgumentException error) {
+            System.out.println(error.getMessage());
+            return getGameCountString();
+        }
+    }
+
+    private int inputGameCountString() {
+        String inputString = Console.readLine();
+        String gameCountString = inputString.trim();
+        if (gameCountString.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수를 입력하세요.");
+        }
+        try {
+            return parseGameCount(gameCountString);
+        } catch (IllegalArgumentException error) {
+            System.out.println(error.getMessage());
+            return inputGameCountString();
+        }
+    }
+
+    private int parseGameCount(String string) {
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException error) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수를 입력하세요.");
+        }
     }
 }

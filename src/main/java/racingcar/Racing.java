@@ -22,6 +22,7 @@ public class Racing {
             raceAllCar();
             printResult();
         }
+        printWinner();
     }
 
     private boolean checkLeftRacing() {
@@ -35,5 +36,27 @@ public class Racing {
     private void printResult() {
         cars.forEach(Car::printPosition);
         System.out.println();
+    }
+
+    private void printWinner() {
+        int leadCarPosition = getLeadCarPosition();
+        buildWinnerString(leadCarPosition);
+        System.out.println(winnerString);
+    }
+
+    private int getLeadCarPosition() {
+        Car leadCar = cars.stream()
+            .max(Comparator.comparing(Car::getPosition))
+            .get();
+        return leadCar.getPosition();
+    }
+
+    private void buildWinnerString(int leadCarPosition) {
+        cars.forEach(car -> {
+            if (car.getPosition() == leadCarPosition) {
+                winnerString.append(car.getName()).append(", ");
+            }
+        });
+        winnerString.setLength(winnerString.length() - 2);
     }
 }

@@ -13,6 +13,7 @@ public class CarRacingController {
         List<String> carNamesList = input.getCarNamesList();
         int raceGameCount = input.getRacingGameCount();
 
-        CarRacingService.getInstance().carRacingGame(carNamesList, raceGameCount);
+        NumberPicker rangedRandomNumberPicker = new RangedRandomNumberPicker(0, 9);
+        CarRacingService.getInstance().carRacingGame(carNamesList, raceGameCount, rangedRandomNumberPicker);
     }
 }

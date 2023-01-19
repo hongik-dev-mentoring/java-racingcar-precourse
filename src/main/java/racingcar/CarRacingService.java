@@ -14,9 +14,9 @@ public class CarRacingService {
         return INSTANCE;
     }
 
-    public void carRacingGame(List<String> carNamesList, int raceGameCount, NumberPicker rangedRandomNumberPicker) {
-        List<Car> cars = getCars(carNamesList, rangedRandomNumberPicker);
-
+    public void carRacingGame(List<String> carNamesList, int raceGameCount,
+        NumberPicker numberPicker) {
+        List<Car> cars = getCars(carNamesList, numberPicker);
         Racing racing = new Racing(cars, raceGameCount);
         racing.race();
     }

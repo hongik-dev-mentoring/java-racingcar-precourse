@@ -1,8 +1,7 @@
 package racingcar;
 
-import static racingcar.CarFactory.getCars;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacingService {
 
@@ -21,5 +20,11 @@ public class CarRacingService {
 
         Racing racing = new Racing(cars, raceGameCount);
         racing.race();
+    }
+
+    private List<Car> getCars(List<String> carNamesList, NumberPicker numberPicker) {
+        return carNamesList.stream()
+            .map(name -> new Car(name, numberPicker))
+            .collect(Collectors.toList());
     }
 }

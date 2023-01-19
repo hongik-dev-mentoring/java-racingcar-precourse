@@ -1,7 +1,5 @@
 package racingcar;
 
-import static racingcar.CarFactory.getCars;
-
 import java.util.List;
 
 public class CarRacingController {
